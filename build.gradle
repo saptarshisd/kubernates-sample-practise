@@ -1,0 +1,36 @@
+	plugins {
+	id 'org.springframework.boot' version '2.2.0.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+	id 'java'
+	id 'eclipse'
+}
+
+group = 'com.novopay'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'io.opentracing.contrib:opentracing-spring-web-autoconfigure:0.3.2'
+	implementation 'io.jaegertracing:jaeger-core:0.35.2'
+	testImplementation('org.springframework.boot:spring-boot-starter-test') {
+		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+	}
+}
+
+test {
+	useJUnitPlatform()
+}
+
+
+
+
+bootJar {
+    mainClassName = 'JaegerDemoApplication.App'
+}
+
+
